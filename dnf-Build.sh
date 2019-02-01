@@ -10,9 +10,10 @@ docker -v
 if [ $? -ne 0 ]
 then
     echo "[!] Docker Install Not found Atempting Install"
-    dnf install docker
+    dnf install docker -y
 #    curl -fsSL https://get.docker.com/ | sh
     systemctl enable docker
+    systemctl start
 else
     echo "[*] Docker Already Installed "
 fi
@@ -22,7 +23,7 @@ fi
 #   smb.conf, shares.conf,
 #
 
-docker build -t smbserver
+docker build -t smbserver  - < Dockerfile
 
 if [ $? -ne 0 ]
 then
