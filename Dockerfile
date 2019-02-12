@@ -3,7 +3,7 @@ MAINTAINER Rohit Sehgal (rsehgal@iitk.ac.in)
 
 RUN apt-get update -y && apt-get install python2.7 -y
 RUN apt-get update
-RUN apt-get install python tcpdump python-pip scp -y
+RUN apt-get install python tcpdump python-pip  -y
 RUN apt-get install aptitude -y
 
 RUN mkdir -p /home/smb
