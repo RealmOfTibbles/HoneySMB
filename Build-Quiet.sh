@@ -1,14 +1,7 @@
 #!/bin/bash
 docker build -t smbserver .
-#if [ ! -d "logs" ]
-#then
-#  mkdir /opt/Honeypot-SMB-HoneySMB/HoneySMB/logs
-#fi
 
-#if [ ! -d "smbDrive" ]
-#then
-#    mkdir /opt/Honeypot-SMB-HoneySMB/HoneySMB/smbDrive
-#fi
+rm -f /opt/Honeypot-SMB-HoneySMB/Done
 # can only use 0.5GB 75% CPU for one core when cpu is restricted its priority is lower then defult 
 docker run --memory=512m --cpus="0.75" --cpu-shares=768 --name SMB -d -p $1:445:445 -p $1:139:139 -v /opt/Honeypot-SMB-HoneySMB/HoneySMB/logs:/home/smb/logs/ -v /opt/Honeypot-SMB-HoneySMB/HoneySMB/smbDrive:/home/smb/smbDrive/ -i smbserver
 
@@ -20,4 +13,4 @@ then
   docker run --memory=512m --cpus="0.75" --cpu-shares=768 --name SMB -d -p $1:445:445 -p $1:139:139 -v /opt/Honeypot-SMB-HoneySMB/HoneySMB/logs:/home/smb/logs/ -v /opt/Honeypot-SMB-HoneySMB/HoneySMB/smbDrive:/home/smb/smbDrive/ -i smbserver
 fi
 
-echo "[!] Done"
+echo "completed" > /opt/Honeypot-SMB-HoneySMB/Done
